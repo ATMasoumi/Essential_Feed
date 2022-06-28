@@ -77,7 +77,6 @@
 		1875EDD4285BBE92009E4B4F /* Essential Feed */ = {
 			isa = PBXGroup;
 			children = (
-				18A459DD2864ED2100DDC3AB /* RemoteFeedLoader.swift */,
 				18A459DC2864ECE300DDC3AB /* Feed API */,
 				1875EDEC285BC32E009E4B4F /* FeedItem.swift */,
 				1875EDEE285BC3B2009E4B4F /* FeedLoader.swift */,
@@ -98,6 +97,7 @@
 		18A459DC2864ECE300DDC3AB /* Feed API */ = {
 			isa = PBXGroup;
 			children = (
+				18A459DD2864ED2100DDC3AB /* RemoteFeedLoader.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
