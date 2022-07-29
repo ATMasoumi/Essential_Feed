@@ -3,4 +3,54 @@
    uuid = "6473ECC8-E128-41CC-9D2A-E22CCD1FAC5A"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57282C13-838F-47DE-AB48-19952787F34E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Essential FeedTests/Feed API/URLSessionHTTPClientTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "test_getFromURL_performsGETRequestWithURL()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "57282C13-838F-47DE-AB48-19952787F34E - 44d1715281368bac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URLRequest) -&gt; () in Essential_FeedTests.URLSessionHTTPClientTests.test_getFromURL_performsGETRequestWithURL() -&gt; ()"
+                  moduleName = "Essential FeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Documents/MyProject/Essential%20Feed/Essential%20FeedTests/Feed%20API/URLSessionHTTPClientTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "321">
+               </Location>
+               <Location
+                  uuid = "57282C13-838F-47DE-AB48-19952787F34E - 44d1715281368bac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Foundation.URLRequest) -&gt; () in Essential_FeedTests.URLSessionHTTPClientTests.test_getFromURL_performsGETRequestWithURL() -&gt; ()"
+                  moduleName = "Essential FeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Documents/MyProject/Essential%20Feed/Essential%20FeedTests/Feed%20API/URLSessionHTTPClientTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "30"
+                  endingLineNumber = "30"
+                  offsetFromSymbolStart = "1061">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
