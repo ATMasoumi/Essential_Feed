@@ -13,16 +13,17 @@ import Essential_Feed
 
 class URLSessionHTTPClientTests: XCTestCase {
     override func setUp() {
+        super.setUp()
         URLProtocolStub.startInterceptingRequests()
     }
-    override class func tearDown() {
+    override func tearDown() {
+        super.tearDown()
         URLProtocolStub.stopInterceptingRequests()
     }
     
     func test_getFromURL_performsGETRequestWithURL() {
-        
         let url = anyURL()
-        let exp = expectation(description: "wait for request")
+        let exp = expectation(description: "Wait for request")
         
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.url, url)
@@ -32,7 +33,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         makeSUT().get(from: url) { _ in }
         
-        wait(for: [exp], timeout: 1)
+        wait(for: [exp], timeout: 1.0)
     }
     func test_getFromURL_failsOnRequestError() {
         
@@ -181,14 +182,15 @@ class URLSessionHTTPClientTests: XCTestCase {
             return request
         }
         override func startLoading() {
-            if let error = URLProtocolStub.stub?.error {
-                client?.urlProtocol(self, didFailWithError: error)
-            }
             if let data = URLProtocolStub.stub?.data {
                 client?.urlProtocol(self, didLoad: data)
             }
             if let response = URLProtocolStub.stub?.response {
                 client?.urlProtocol(self, didReceive: response, cacheStoragePolicy: .notAllowed)
+            }
+            
+            if let error = URLProtocolStub.stub?.error {
+                client?.urlProtocol(self, didFailWithError: error)
             }
             client?.urlProtocolDidFinishLoading(self)
         }
