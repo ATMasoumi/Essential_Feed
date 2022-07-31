@@ -45,7 +45,7 @@ class Essential_FeedAPIEndToEndTests: XCTestCase {
             receivedResult = result
             exp.fulfill()
         }
-        wait(for: [exp], timeout: 6)
+        wait(for: [exp], timeout: 8)
         return receivedResult
     }
     private func expectedItem(at index: Int) -> FeedItem {
