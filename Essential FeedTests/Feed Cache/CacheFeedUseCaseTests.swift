@@ -16,9 +16,13 @@ class LocalFeedLoader {
     func save(_ feedItems: [FeedItem]) {
         store.deleteCachedFeed()
     }
+    func completeDeletion(with error: Error) {
+        
+    }
 }
 class FeedStore {
     var deleteCachedFeedCallCount = 0
+    var insertCallCount = 0
     func deleteCachedFeed() {
         deleteCachedFeedCallCount += 1
     }
@@ -40,6 +44,17 @@ class CacheFeedUseCaseTests: XCTestCase {
         XCTAssertEqual(store.deleteCachedFeedCallCount, 1)
     }
     
+    func test_save_doesNotRequestsCacheInsertionOnDeletionError() {
+        let (sut,store) = makeSUT()
+        let items = [uniqueItem(),uniqueItem()]
+        let deletionError = anyNSError()
+        
+        sut.save(items)
+        sut.completeDeletion(with: deletionError)
+        
+        XCTAssertEqual(store.insertCallCount, 0)
+    }
+    
     // MARK: Helper Methods
    
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStore) {
@@ -54,7 +69,12 @@ class CacheFeedUseCaseTests: XCTestCase {
     private func uniqueItem() -> FeedItem {
         FeedItem(id: UUID(), description: "any", location: "any", imageURL: anyURL())
     }
+    
     private func anyURL() -> URL {
         URL(string: "https://any-url.com")!
+    }
+    
+    private func anyNSError() -> NSError {
+        NSError(domain: "any error", code: 0)
     }
 }
