@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1811A60E289D07F400F6731F /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811A60D289D07F300F6731F /* CacheFeedUseCaseTests.swift */; };
 		181CAAF02897074500D8788D /* Essential_FeedAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181CAAEF2897074500D8788D /* Essential_FeedAPIEndToEndTests.swift */; };
 		181CAAF12897074500D8788D /* Essential_Feed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1875EDD2285BBE92009E4B4F /* Essential_Feed.framework */; };
 		181CAAF7289710A000D8788D /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182DF25C28927A19009A5BE2 /* XCTestCase+MemoryLeakTracking.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1811A60D289D07F300F6731F /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		181CAAED2897074500D8788D /* Essential_FeedAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essential_FeedAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		181CAAEF2897074500D8788D /* Essential_FeedAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Essential_FeedAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		182DF25C28927A19009A5BE2 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1811A60C289D07C400F6731F /* Feed Cache */ = {
+			isa = PBXGroup;
+			children = (
+				1811A60D289D07F300F6731F /* CacheFeedUseCaseTests.swift */,
+			);
+			path = "Feed Cache";
+			sourceTree = "<group>";
+		};
 		181CAAEE2897074500D8788D /* Essential_FeedAPIEndToEndTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +165,7 @@
 		1875EDE0285BBE92009E4B4F /* Essential FeedTests */ = {
 			isa = PBXGroup;
 			children = (
+				1811A60C289D07C400F6731F /* Feed Cache */,
 				185EFCD7286D52FB00D807E7 /* Feed API */,
 			);
 			path = "Essential FeedTests";
@@ -334,6 +345,7 @@
 			files = (
 				1875EDE2285BBE92009E4B4F /* LoadFeedFromRemoteUseCaseTests.swift in Sources */,
 				18465FC9286FDE5200FE17E2 /* URLSessionHTTPClientTests.swift in Sources */,
+				1811A60E289D07F400F6731F /* CacheFeedUseCaseTests.swift in Sources */,
 				182DF25D28927A19009A5BE2 /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
