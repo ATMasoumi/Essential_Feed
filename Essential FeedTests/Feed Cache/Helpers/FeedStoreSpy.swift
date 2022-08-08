@@ -8,13 +8,16 @@
 import Foundation
 import Essential_Feed
 
- class FeedStoreSpy: FeedStore {
+class FeedStoreSpy: FeedStore {
+    
+    
     typealias DeletionCompletion = (Error?) -> Void
     typealias InsertionCompletion = (Error?) -> Void
     
     enum ReceivedMessage: Equatable {
         case deleteCachedFeedMessage
         case insert([LocalFeedImage], Date)
+        case retrieve
     }
     
     private(set) var receivedMessages = [ReceivedMessage]()
@@ -46,6 +49,10 @@ import Essential_Feed
     
     func completeDeletionSuccessfully(at index: Int = 0) {
         deletionCompletions[index](nil)
+    }
+   
+    func retrieve() {
+        receivedMessages.append(.retrieve)
     }
     
 }
