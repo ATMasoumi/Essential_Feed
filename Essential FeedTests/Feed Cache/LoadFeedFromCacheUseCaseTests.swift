@@ -71,6 +71,17 @@ class LoadFeedFromCacheUseCaseTests: XCTestCase {
         }
     }
     
+    func test_loadDeletesCacheOnRetrievalError() {
+        let (sut, store) = makeSUT()
+        let retrievalError = anyNSError()
+        
+        sut.load { _ in }
+        
+        store.completeRetrieval(with: retrievalError)
+        
+        XCTAssertEqual(store.receivedMessages, [.retrieve, .deleteCachedFeedMessage])
+    }
+    
     // MARK: Helper Methods
    
     private func makeSUT(currentDate: @escaping () -> Date = Date.init, file: StaticString = #file, line: UInt = #line) -> (sut: LocalFeedLoader, store: FeedStoreSpy) {
