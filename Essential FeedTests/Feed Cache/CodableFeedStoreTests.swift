@@ -71,7 +71,7 @@ class CodableFeedStoreTests: XCTestCase {
         try? FileManager.default.removeItem(at: storeURL)
     }
     func test_retrieve_deliversEmptyOnEmptyCache() {
-        let sut = CodableFeedStore()
+        let sut = makeSUT()
         let exp = expectation(description: "wait on retrieve")
         sut.retrieve { result in
             switch result {
@@ -87,7 +87,7 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     func test_retrieve_hasNoSideEffectOnEmptyCache() {
-        let sut = CodableFeedStore()
+        let sut = makeSUT()
         let exp = expectation(description: "wait on retrieve")
         sut.retrieve { firstResult in
             sut.retrieve { secondReesult in
@@ -105,7 +105,7 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     func test_retrieveAfterInsertingToEmptyCahce_deliversInsertedValues() {
-        let sut = CodableFeedStore()
+        let sut = makeSUT()
         let exp = expectation(description: "wait on retrieve")
         let feed = uniqueImageFeed().local
         let timestamp = Date()
@@ -127,6 +127,12 @@ class CodableFeedStoreTests: XCTestCase {
         }
         wait(for: [exp], timeout: 1)
         
+    }
+    
+    // MARK: helpers
+    
+    func makeSUT() -> CodableFeedStore {
+        CodableFeedStore()
     }
     
 }
