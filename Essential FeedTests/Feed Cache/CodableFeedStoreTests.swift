@@ -46,11 +46,14 @@ class CodableFeedStore {
            return completion(.empty)
         }
         
-        let decoder = JSONDecoder()
-        let cache = try! decoder.decode(Cache.self, from: data)
-        
-        completion(.found(feed: cache.localFeed, timestamp: cache.timestamp))
-        
+        do {
+            let decoder = JSONDecoder()
+            let cache = try decoder.decode(Cache.self, from: data)
+            completion(.found(feed: cache.localFeed, timestamp: cache.timestamp))
+        } catch {
+            completion(.failure(error))
+        }
+       
     }
     
     func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping FeedStore.InsertionCompletion){
@@ -80,27 +83,20 @@ class CodableFeedStoreTests: XCTestCase {
         let sut = makeSUT()
         
         expect(sut, toRetrieveTwice: .empty)
-        
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "wait on retrieve")
         let feed = uniqueImageFeed().local
         let timestamp = Date()
         
-        sut.insert(feed, timestamp: timestamp) { insertionError in
-            XCTAssertNil(insertionError)
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
+        Insert((feed, timestamp), to: sut)
         
         expect(sut, toRetrieve: .found(feed: feed, timestamp: timestamp))
     }
     
     func test_retrieve_hasNoSideEffectOnNonEmptyCache() {
         let sut = makeSUT()
-        let exp = expectation(description: "wait on retrieve")
         let feed = uniqueImageFeed().local
         let timestamp = Date()
         
@@ -108,7 +104,13 @@ class CodableFeedStoreTests: XCTestCase {
         
         expect(sut, toRetrieveTwice: .found(feed: feed, timestamp: timestamp))
     }
-    
+    func test_retrieve_deliversFailureOnRetrieveError() {
+        let sut = makeSUT()
+        
+        try! "invalid data".write(to: testSpecificStoreURL(), atomically: false, encoding: .utf8)
+        
+        expect(sut, toRetrieve: .failure(anyNSError()))
+    }
     // MARK: helpers
     
     func makeSUT() -> CodableFeedStore {
@@ -120,7 +122,7 @@ class CodableFeedStoreTests: XCTestCase {
         let exp = expectation(description: "wait for retrieve")
         sut.retrieve { retrieveResult in
             switch (expectedResult, retrieveResult) {
-            case (.empty, .empty):
+            case (.empty, .empty),(.failure,.failure):
                 break
             case let (.found(expected),.found(retrieved)):
                 XCTAssertEqual(retrieved.feed, expected.feed, file: file, line: line)
