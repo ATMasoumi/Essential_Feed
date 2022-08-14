@@ -133,7 +133,7 @@ class CodableFeedStoreTests: XCTestCase {
     
     func test_retrieve_hasNoSideEffectOnFailure() {
         let storeURL = testSpecificStoreURL()
-        let sut = CodableFeedStore(storeURL: storeURL)
+        let sut = makeSUT(storeURL: storeURL)
         
         try! "invalid data".write(to: storeURL , atomically: false, encoding: .utf8)
 
@@ -197,12 +197,12 @@ class CodableFeedStoreTests: XCTestCase {
     
     // MARK: helpers
     
-    func makeSUT(storeURL: URL? = nil) -> CodableFeedStore {
+    func makeSUT(storeURL: URL? = nil) -> FeedStore {
         let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificStoreURL())
         trackMemoryLeak(sut)
         return sut
     }
-    private func deleteCache(from sut: CodableFeedStore) -> Error? {
+    private func deleteCache(from sut: FeedStore) -> Error? {
         let exp = expectation(description: "Wait for cache deletion")
         var deletionError: Error?
         sut.deleteCachedFeed { receivedDeletionError in
@@ -213,7 +213,7 @@ class CodableFeedStoreTests: XCTestCase {
         return deletionError
     }
 
-    private func expect(_ sut: CodableFeedStore, toRetrieve expectedResult: RetreiveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: FeedStore, toRetrieve expectedResult: RetreiveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
         let exp = expectation(description: "wait for retrieve")
         sut.retrieve { retrieveResult in
             switch (expectedResult, retrieveResult) {
@@ -232,7 +232,7 @@ class CodableFeedStoreTests: XCTestCase {
     }
     
     @discardableResult
-    private func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: CodableFeedStore) -> Error? {
+    private func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: FeedStore) -> Error? {
         let exp = expectation(description: "wait for insert")
         var insertionError: Error?
         sut.insert(cache.feed, timestamp: cache.timestamp) { recivedInsertionError in
@@ -242,7 +242,7 @@ class CodableFeedStoreTests: XCTestCase {
         wait(for: [exp], timeout: 1)
         return insertionError
     }
-    private func expect(_ sut: CodableFeedStore, toRetrieveTwice expectedResult: RetreiveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
+    private func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetreiveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
         expect(sut, toRetrieve: expectedResult, file: file, line: line)
     }
