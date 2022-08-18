@@ -40,7 +40,8 @@ public class CodableFeedStore: FeedStore {
     public init(storeURL: URL) {
         self.storeURL = storeURL
     }
-    
+    /// The completion handler can be invoked in any thread.
+    /// Clients are responsible to dispatch to appropriate threads, if needed.
     public func retrieve(completion: @escaping RetrievalCompletion) {
         let storeURL = self.storeURL
         queue.async {
@@ -59,7 +60,8 @@ public class CodableFeedStore: FeedStore {
         
        
     }
-    
+    /// The completion handler can be invoked in any thread.
+    /// Clients are responsible to dispatch to appropriate threads, if needed.
     public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping InsertionCompletion){
         let storeURL = self.storeURL
         queue.async(flags:.barrier) {
@@ -75,6 +77,8 @@ public class CodableFeedStore: FeedStore {
         }
     }
     
+    /// The completion handler can be invoked in any thread.
+    /// Clients are responsible to dispatch to appropriate threads, if needed.
     public func deleteCachedFeed(completion: @escaping DeletionCompletion) {
         let storeURL = self.storeURL
         queue.async(flags:.barrier) {
