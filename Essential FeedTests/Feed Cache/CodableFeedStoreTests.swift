@@ -8,7 +8,7 @@
 import XCTest
 import Essential_Feed
 
-class CodableFeedStoreTests: XCTestCase,FailableFeedStoreSpecs {
+class CodableFeedStoreTests: XCTestCase,FailableFeedStoreSpecs,FeedStoreSpecs {
     override func tearDown() {
         super.tearDown()
         undoStoreSideEffects()
@@ -205,51 +205,7 @@ class CodableFeedStoreTests: XCTestCase,FailableFeedStoreSpecs {
         trackMemoryLeak(sut)
         return sut
     }
-    @discardableResult
-    private func deleteCache(from sut: FeedStore) -> Error? {
-        let exp = expectation(description: "Wait for cache deletion")
-        var deletionError: Error?
-        sut.deleteCachedFeed { receivedDeletionError in
-            deletionError = receivedDeletionError
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 9.0)
-        return deletionError
-    }
 
-    private func expect(_ sut: FeedStore, toRetrieve expectedResult: RetreiveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
-        let exp = expectation(description: "wait for retrieve")
-        sut.retrieve { retrieveResult in
-            switch (expectedResult, retrieveResult) {
-            case (.empty, .empty),(.failure,.failure):
-                break
-            case let (.found(expected),.found(retrieved)):
-                XCTAssertEqual(retrieved.feed, expected.feed, file: file, line: line)
-                XCTAssertEqual(retrieved.timestamp, retrieved.timestamp, file: file, line: line)
-                break
-            default:
-                XCTFail("expected to retrieve \(expectedResult) , got \(retrieveResult) instead", file: file, line: line)
-            }
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 2)
-    }
-    
-    @discardableResult
-    private func insert(_ cache: (feed: [LocalFeedImage], timestamp: Date), to sut: FeedStore) -> Error? {
-        let exp = expectation(description: "wait for insert")
-        var insertionError: Error?
-        sut.insert(cache.feed, timestamp: cache.timestamp) { recivedInsertionError in
-             insertionError = recivedInsertionError
-            exp.fulfill()
-        }
-        wait(for: [exp], timeout: 1)
-        return insertionError
-    }
-    private func expect(_ sut: FeedStore, toRetrieveTwice expectedResult: RetreiveCachedFeedResult, file: StaticString = #file, line: UInt = #line) {
-        expect(sut, toRetrieve: expectedResult, file: file, line: line)
-        expect(sut, toRetrieve: expectedResult, file: file, line: line)
-    }
     
     private func setupEmptyStoreState() {
         deleteStoreArtifacts()
