@@ -142,7 +142,7 @@ class CodableFeedStoreTests: XCTestCase, FailableFeedStoreSpecs {
     
     func makeSUT(storeURL: URL? = nil) -> FeedStore {
         let sut = CodableFeedStore(storeURL: storeURL ?? testSpecificStoreURL())
-        trackMemoryLeak(sut)
+        trackForMemoryLeaks(sut)
         return sut
     }
 

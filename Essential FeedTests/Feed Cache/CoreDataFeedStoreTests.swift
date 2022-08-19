@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Essential_Feed
 
 class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
    
@@ -15,7 +16,9 @@ class CoreDataFeedStoreTests: XCTestCase, FeedStoreSpecs {
     }
     
     func test_retrieve_hasNoSideEffectOnEmptyCache() {
-            
+        let sut = makeSUT()
+        
+        assertThatRetrieveHasNoSideEffectsOnEmptyCache(on: sut)
     }
     
     func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
