@@ -20,10 +20,10 @@ public struct CachedFeed {
 
 public protocol FeedStore {
     
-    typealias DeletionError = Error?
+    typealias DeletionError = Result<Void, Error>
     typealias DeletionCompletion = (DeletionError) -> Void
     
-    typealias InsertionError = Error?
+    typealias InsertionError = Result<Void, Error>
     typealias InsertionCompletion = (InsertionError) -> Void
     
     typealias RetreivalResult = Result<CachedFeed?, Error>
