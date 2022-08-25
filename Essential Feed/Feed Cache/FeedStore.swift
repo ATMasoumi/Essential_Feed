@@ -8,15 +8,25 @@
 import Foundation
 
 
-public enum CachedFeed {
-    case empty
-    case found(feed: [LocalFeedImage], timestamp: Date)
+public struct CachedFeed {
+    public let feed: [LocalFeedImage]
+    public let timestamp: Date
+    
+    public init(feed: [LocalFeedImage], timestamp: Date) {
+        self.feed = feed
+        self.timestamp = timestamp
+    }
 }
 
 public protocol FeedStore {
-    typealias DeletionCompletion = (Error?) -> Void
-    typealias InsertionCompletion = (Error?) -> Void
-    typealias RetreivalResult = Result<CachedFeed, Error>
+    
+    typealias DeletionError = Error?
+    typealias DeletionCompletion = (DeletionError) -> Void
+    
+    typealias InsertionError = Error?
+    typealias InsertionCompletion = (InsertionError) -> Void
+    
+    typealias RetreivalResult = Result<CachedFeed?, Error>
 
     typealias RetrievalCompletion = (RetreivalResult) -> Void
     
