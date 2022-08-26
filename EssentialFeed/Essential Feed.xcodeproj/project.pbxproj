@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1804BFD328B88BC10008A42B /* Essential_FeediOS.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1804BFD228B88BC10008A42B /* Essential_FeediOS.docc */; };
 		1804BFD928B88BC10008A42B /* Essential_FeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1804BFCF28B88BC10008A42B /* Essential_FeediOS.framework */; };
+		1804BFE728B8A92A0008A42B /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1804BFE628B8A92A0008A42B /* FeedViewControllerTests.swift */; };
 		1811A60E289D07F400F6731F /* CacheFeedUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811A60D289D07F300F6731F /* CacheFeedUseCaseTests.swift */; };
 		1811A611289FECB500F6731F /* LocalFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811A610289FECB500F6731F /* LocalFeedLoader.swift */; };
 		1811A613289FED8700F6731F /* FeedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1811A612289FED8700F6731F /* FeedStore.swift */; };
@@ -89,6 +90,7 @@
 		1804BFCF28B88BC10008A42B /* Essential_FeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Essential_FeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1804BFD228B88BC10008A42B /* Essential_FeediOS.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Essential_FeediOS.docc; sourceTree = "<group>"; };
 		1804BFD828B88BC10008A42B /* Essential_FeediOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Essential_FeediOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1804BFE628B8A92A0008A42B /* FeedViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewControllerTests.swift; sourceTree = "<group>"; };
 		1811A60D289D07F300F6731F /* CacheFeedUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheFeedUseCaseTests.swift; sourceTree = "<group>"; };
 		1811A610289FECB500F6731F /* LocalFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFeedLoader.swift; sourceTree = "<group>"; };
 		1811A612289FED8700F6731F /* FeedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedStore.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		1804BFDC28B88BC10008A42B /* Essential_FeediOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				1804BFE628B8A92A0008A42B /* FeedViewControllerTests.swift */,
 			);
 			path = Essential_FeediOSTests;
 			sourceTree = "<group>";
@@ -508,6 +511,7 @@
 					};
 					1804BFD728B88BC10008A42B = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 					};
 					181CAAEC2897074500D8788D = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -604,6 +608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1804BFE728B8A92A0008A42B /* FeedViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -761,15 +766,22 @@
 		1804BFE428B88BC10008A42B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99TB4TR395;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ATMasoumi.Essential-FeediOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -777,10 +789,16 @@
 		1804BFE528B88BC10008A42B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 99TB4TR395;
 				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ATMasoumi.Essential-FeediOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
