@@ -63,6 +63,7 @@
 		18F40AEC28C08A4500DD87A9 /* FeedRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AEB28C08A4500DD87A9 /* FeedRefreshViewController.swift */; };
 		18F40AEE28C096B800DD87A9 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AED28C096B800DD87A9 /* FeedImageCellController.swift */; };
 		18F40AF128C16E5F00DD87A9 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AF028C16E5F00DD87A9 /* FeedUIComposer.swift */; };
+		18F40AF428C1F43900DD87A9 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AF328C1F43900DD87A9 /* FeedViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -168,6 +169,7 @@
 		18F40AEB28C08A4500DD87A9 /* FeedRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRefreshViewController.swift; sourceTree = "<group>"; };
 		18F40AED28C096B800DD87A9 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 		18F40AF028C16E5F00DD87A9 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
+		18F40AF328C1F43900DD87A9 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -428,6 +430,7 @@
 		18F40AE428C0793300DD87A9 /* Feed UI */ = {
 			isa = PBXGroup;
 			children = (
+				18F40AF228C1F42100DD87A9 /* Models */,
 				18F40AEF28C16E4900DD87A9 /* Composers */,
 				18F40AE528C0793A00DD87A9 /* Controllers */,
 				18F40AE628C0795C00DD87A9 /* Views */,
@@ -491,6 +494,14 @@
 				18F40AF028C16E5F00DD87A9 /* FeedUIComposer.swift */,
 			);
 			path = Composers;
+			sourceTree = "<group>";
+		};
+		18F40AF228C1F42100DD87A9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18F40AF328C1F43900DD87A9 /* FeedViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -736,6 +747,7 @@
 				1891EFA228BF13AE0084AE56 /* UIView+Shimmering.swift in Sources */,
 				180A030128BA8F9500DDA88F /* FeedImageCell.swift in Sources */,
 				1804BFD328B88BC10008A42B /* Essential_FeediOS.docc in Sources */,
+				18F40AF428C1F43900DD87A9 /* FeedViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
