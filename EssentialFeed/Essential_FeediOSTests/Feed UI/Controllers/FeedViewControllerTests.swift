@@ -264,6 +264,7 @@ final class FeedViewControllerTests: XCTestCase {
             assertThat(sut, hasViewConfiguredFor: image, at: index, file: file, line: line)
         }
     }
+    
     private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #file, line: UInt = #line) {
         let view = sut.feedImageView(at: index)
         
