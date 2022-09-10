@@ -9,7 +9,24 @@ import XCTest
 import Essential_Feed
 import Essential_FeediOS
  
+import SwiftUI
+
+struct MyView: View {
+    var body: some View {
+        Text("hi")
+    }
+}
 final class FeedViewControllerTests: XCTestCase {
+    
+    func test_feedView_hasTitle() {
+        let (sut, _) = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        XCTAssertEqual(sut.title, "My Feed")
+        
+        let sut2 = MyView()
+        
+    }
     
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
