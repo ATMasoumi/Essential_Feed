@@ -1,0 +1,10 @@
+/* 
+  Feed.strings
+  Essential Feed
+
+  Created by Amin on 6/29/1401 AP.
+  
+*/
+"FEED_VIEW_TITLE" = "To Feed ¥ou";
+
+"FEED_VIEW_CONNECTION_ERROR" = "Couldn't connect to server";
