@@ -85,6 +85,9 @@
 		18ADF93228B94FF400FF1C99 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ADF93128B94FF400FF1C99 /* FeedViewController.swift */; };
 		18AEDF5428DACA4000E58EAD /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEDF5328DACA4000E58EAD /* FeedPresenter.swift */; };
 		18AEDF5528DACB7700E58EAD /* Feed.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18AEDF4F28D9778000E58EAD /* Feed.strings */; };
+		18AEDF5728DACC0A00E58EAD /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEDF5628DACC0A00E58EAD /* FeedViewModel.swift */; };
+		18AEDF5928DACC4300E58EAD /* FeedLoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEDF5828DACC4300E58EAD /* FeedLoadingViewModel.swift */; };
+		18AEDF5B28DACC5A00E58EAD /* FeedErrorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEDF5A28DACC5A00E58EAD /* FeedErrorViewModel.swift */; };
 		18F40AE328C0792500DD87A9 /* FeedImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AE228C0792500DD87A9 /* FeedImageDataLoader.swift */; };
 		18F40AEE28C096B800DD87A9 /* FeedImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AED28C096B800DD87A9 /* FeedImageCellController.swift */; };
 		18F40AF128C16E5F00DD87A9 /* FeedUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F40AF028C16E5F00DD87A9 /* FeedUIComposer.swift */; };
@@ -220,6 +223,9 @@
 		18AEDF5028D9778400E58EAD /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Feed.strings; sourceTree = "<group>"; };
 		18AEDF5128D9778600E58EAD /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Feed.strings"; sourceTree = "<group>"; };
 		18AEDF5328DACA4000E58EAD /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
+		18AEDF5628DACC0A00E58EAD /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		18AEDF5828DACC4300E58EAD /* FeedLoadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoadingViewModel.swift; sourceTree = "<group>"; };
+		18AEDF5A28DACC5A00E58EAD /* FeedErrorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedErrorViewModel.swift; sourceTree = "<group>"; };
 		18F40AE228C0792500DD87A9 /* FeedImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageDataLoader.swift; sourceTree = "<group>"; };
 		18F40AED28C096B800DD87A9 /* FeedImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedImageCellController.swift; sourceTree = "<group>"; };
 		18F40AF028C16E5F00DD87A9 /* FeedUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedUIComposer.swift; sourceTree = "<group>"; };
@@ -509,6 +515,9 @@
 			isa = PBXGroup;
 			children = (
 				18AEDF5328DACA4000E58EAD /* FeedPresenter.swift */,
+				18AEDF5628DACC0A00E58EAD /* FeedViewModel.swift */,
+				18AEDF5828DACC4300E58EAD /* FeedLoadingViewModel.swift */,
+				18AEDF5A28DACC5A00E58EAD /* FeedErrorViewModel.swift */,
 				18AEDF4F28D9778000E58EAD /* Feed.strings */,
 			);
 			path = "Feed Presentation";
@@ -894,12 +903,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AEDF5728DACC0A00E58EAD /* FeedViewModel.swift in Sources */,
 				1811A61728A0DD4900F6731F /* LocalFeedImage.swift in Sources */,
 				1845E41628AF918D008C718C /* FeedStore.xcdatamodeld in Sources */,
+				18AEDF5B28DACC5A00E58EAD /* FeedErrorViewModel.swift in Sources */,
 				1811A613289FED8700F6731F /* FeedStore.swift in Sources */,
 				182DF25F28941044009A5BE2 /* URLSessionHTTPClient.swift in Sources */,
 				18AEDF5428DACA4000E58EAD /* FeedPresenter.swift in Sources */,
 				1875EDEF285BC3B2009E4B4F /* FeedLoader.swift in Sources */,
+				18AEDF5928DACC4300E58EAD /* FeedLoadingViewModel.swift in Sources */,
 				185EFCD4286D3D7D00D807E7 /* HTTPClient.swift in Sources */,
 				189D9FEA28B29A220096EF2B /* CoreDataHelpers.swift in Sources */,
 				18A459DE2864ED2100DDC3AB /* RemoteFeedLoader.swift in Sources */,
