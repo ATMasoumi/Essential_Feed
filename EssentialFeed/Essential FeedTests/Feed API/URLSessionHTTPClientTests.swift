@@ -12,15 +12,11 @@ import Essential_Feed
 
 
 class URLSessionHTTPClientTests: XCTestCase {
-    override func setUp() {
-        super.setUp()
-        
-        URLProtocolStub.startInterceptingRequests()
-    }
+    
     override func tearDown() {
-        
         super.tearDown()
-        URLProtocolStub.stopInterceptingRequests()
+        
+        URLProtocolStub.removeStub()
     }
     
     func test_getFromURL_performsGETRequestWithURL() {
@@ -108,9 +104,14 @@ class URLSessionHTTPClientTests: XCTestCase {
     // MARK: helpers
     
     private func makeSUT(file: StaticString = #file, line: UInt = #line) -> HTTPClient {
-        let sut = URLSessionHTTPClient()
-        trackForMemoryLeaks(sut,file: file, line: line)
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [URLProtocolStub.self]
+        let session = URLSession(configuration: configuration)
+        
+        let sut = URLSessionHTTPClient(session: session)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+
     }
     
     private func resultErrorFor(_ values: (data: Data?, response: URLResponse?, error: Error?)? = nil, taskHandler: (HTTPClientTask) -> Void = { _ in }, file: StaticString = #file, line: UInt = #line) -> Error? {
@@ -137,18 +138,6 @@ class URLSessionHTTPClientTests: XCTestCase {
         }
     }
     
-//    private func resultFor(data: Data?, response: URLResponse?, error: Error?, file: StaticString = #file, line: UInt = #line) -> HTTPClient.Result {
-//        URLProtocolStub.stub(data: data, response: response, error: error)
-//        let sut = makeSUT(file:file, line: line)
-//        let exp = expectation(description: "Wait for completion")
-//        var receivedResult: HTTPClient.Result!
-//        sut.get(from: anyURL()) { result in
-//            receivedResult = result
-//            exp.fulfill()
-//        }
-//        wait(for: [exp], timeout: 5.0)
-//        return receivedResult
-//    }
     private func resultFor(_ values: (data: Data?, response: URLResponse?, error: Error?)?, taskHandler: (HTTPClientTask) -> Void = { _ in },  file: StaticString = #file, line: UInt = #line) -> HTTPClient.Result {
         values.map { URLProtocolStub.stub(data: $0, response: $1, error: $2) }
         
@@ -210,6 +199,11 @@ class URLSessionHTTPClientTests: XCTestCase {
         static func observeRequests(observer: @escaping (URLRequest)-> Void) {
             stub = Stub(data: nil, response: nil, error: nil, requestObserver: observer)
         }
+        
+        static func removeStub() {
+            stub = nil
+        }
+        
         override class func canInit(with request: URLRequest) -> Bool {
             return true
         }
