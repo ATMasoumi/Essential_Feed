@@ -12,6 +12,7 @@ import CoreData
     @NSManaged var imageDescription: String?
     @NSManaged var location: String?
     @NSManaged var url: URL
+    @NSManaged var data: Data?
     @NSManaged var cache: ManagedCache
 }
 extension ManagedFeedImage {
