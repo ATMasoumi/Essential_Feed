@@ -20,6 +20,7 @@
 		18ABD3D528E391B500638AB5 /* Essential_Feed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18ABD3D228E391B500638AB5 /* Essential_Feed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		18ABD3D628E391B500638AB5 /* Essential_FeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18ABD3D328E391B500638AB5 /* Essential_FeediOS.framework */; };
 		18ABD3D728E391B500638AB5 /* Essential_FeediOS.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 18ABD3D328E391B500638AB5 /* Essential_FeediOS.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		18CC88C728E74C8400C4AD2F /* FeedLoaderWithFallbackComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CC88C628E74C8400C4AD2F /* FeedLoaderWithFallbackComposite.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		18ABD3C428E3909000638AB5 /* EssentialAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		18ABD3D228E391B500638AB5 /* Essential_Feed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Essential_Feed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18ABD3D328E391B500638AB5 /* Essential_FeediOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Essential_FeediOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18CC88C628E74C8400C4AD2F /* FeedLoaderWithFallbackComposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderWithFallbackComposite.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				18ABD3A128E3908E00638AB5 /* AppDelegate.swift */,
 				18ABD3A328E3908E00638AB5 /* SceneDelegate.swift */,
 				18ABD3A528E3908E00638AB5 /* ViewController.swift */,
+				18CC88C628E74C8400C4AD2F /* FeedLoaderWithFallbackComposite.swift */,
 				18ABD3A728E3908E00638AB5 /* Main.storyboard */,
 				18ABD3AA28E3909000638AB5 /* Assets.xcassets */,
 				18ABD3AC28E3909000638AB5 /* LaunchScreen.storyboard */,
@@ -294,6 +297,7 @@
 			files = (
 				18ABD3A628E3908E00638AB5 /* ViewController.swift in Sources */,
 				18ABD3A228E3908E00638AB5 /* AppDelegate.swift in Sources */,
+				18CC88C728E74C8400C4AD2F /* FeedLoaderWithFallbackComposite.swift in Sources */,
 				18ABD3A428E3908E00638AB5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
