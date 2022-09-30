@@ -11,11 +11,20 @@ import Essential_Feed
 
 class FeedLoaderWithFallbackComposite: FeedLoader {
     private let primary: FeedLoader
+    private let fallback: FeedLoader
     init(primary: FeedLoader, fallback: FeedLoader) {
         self.primary = primary
+        self.fallback = fallback
     }
     func load(completion: @escaping (FeedLoader.Result) -> ()) {
-        primary.load(completion: completion)
+        primary.load { [weak self] result in
+            switch result {
+            case .success:
+                completion(result)
+            case .failure:
+                self?.fallback.load(completion: completion)
+            }
+        }
     }
 }
 class  FeedLoaderWithFallbackCompositeTests: XCTestCase {
@@ -39,6 +48,24 @@ class  FeedLoaderWithFallbackCompositeTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_load_deliversFallbackFeedOnPrimaryFailure() {
+        
+        let fallbackFeed = uniqueFeed()
+        let sut = makeSUT(primaryResult: .failure(anyNSError()), fallbackResult: .success(fallbackFeed))
+        
+        let exp = expectation(description: "wait for load completion")
+        sut.load { result in
+            switch result {
+            case let .success(receivedFeed):
+                XCTAssertEqual(receivedFeed, fallbackFeed)
+            case .failure:
+                XCTFail("expected successful load feed result, got \(result) instead")
+            }
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: helpers
     
     private func makeSUT(primaryResult: FeedLoader.Result, fallbackResult: FeedLoader.Result, file: StaticString = #file, line: UInt = #line) -> FeedLoader {
@@ -54,7 +81,7 @@ class  FeedLoaderWithFallbackCompositeTests: XCTestCase {
     }
     
     private func trackForMemoryLeak(_ instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock {
+        addTeardownBlock { [weak instance] in
             XCTAssertNil(instance, "instance should have been deallocated. potential memory leak.", file: file, line: line)
         }
     }
@@ -62,6 +89,9 @@ class  FeedLoaderWithFallbackCompositeTests: XCTestCase {
         return [FeedImage(id: UUID(), description: "any", location: "any", url: URL(string: "http://any-url.com")!)]
     }
     
+    private func anyNSError() -> NSError {
+        NSError(domain: "any error", code: 0)
+    }
     
     private class LoaderStub: FeedLoader {
         private let result: FeedLoader.Result
