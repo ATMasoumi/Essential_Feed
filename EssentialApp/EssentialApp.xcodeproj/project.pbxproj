@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1822E1D928E81F1D00A852C8 /* FeedLoaderCacheDecoratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1822E1D828E81F1D00A852C8 /* FeedLoaderCacheDecoratorTests.swift */; };
 		18ABD3A228E3908E00638AB5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABD3A128E3908E00638AB5 /* AppDelegate.swift */; };
 		18ABD3A428E3908E00638AB5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABD3A328E3908E00638AB5 /* SceneDelegate.swift */; };
 		18ABD3A628E3908E00638AB5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ABD3A528E3908E00638AB5 /* ViewController.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1822E1D828E81F1D00A852C8 /* FeedLoaderCacheDecoratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoaderCacheDecoratorTests.swift; sourceTree = "<group>"; };
 		18ABD39E28E3908E00638AB5 /* EssentialApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EssentialApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18ABD3A128E3908E00638AB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18ABD3A328E3908E00638AB5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				18CC88CC28E75D5D00C4AD2F /* Helpers */,
 				18ABD3B828E3909000638AB5 /* RemoteWithLocalFallbackFeedLoaderTests.swift */,
 				18CC88C828E7547B00C4AD2F /* FeedImageDataLoaderWithFallbackCompositeTests.swift */,
+				1822E1D828E81F1D00A852C8 /* FeedLoaderCacheDecoratorTests.swift */,
 			);
 			path = EssentialAppTests;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				18CC88D028E75E2E00C4AD2F /* SharedTestHelpers.swift in Sources */,
 				18CC88C928E7547B00C4AD2F /* FeedImageDataLoaderWithFallbackCompositeTests.swift in Sources */,
 				18ABD3B928E3909000638AB5 /* RemoteWithLocalFallbackFeedLoaderTests.swift in Sources */,
+				1822E1D928E81F1D00A852C8 /* FeedLoaderCacheDecoratorTests.swift in Sources */,
 				18CC88CE28E75D8700C4AD2F /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
