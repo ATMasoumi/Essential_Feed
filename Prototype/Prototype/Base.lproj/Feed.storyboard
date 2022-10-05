@@ -70,6 +70,7 @@ Location</string>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tsT-7G-iNQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
+                                                            <accessibility key="accessibilityConfiguration" identifier="feed-image-view"/>
                                                         </imageView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBs-Kj-9Fq">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
@@ -121,6 +122,7 @@ Location</string>
                                         <constraint firstItem="AIZ-ON-RY8" firstAttribute="top" secondItem="ZOf-kB-Mm6" secondAttribute="topMargin" priority="999" constant="6" id="zeV-IS-QiH"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <accessibility key="accessibilityConfiguration" identifier="feed-image-cell"/>
                                 <connections>
                                     <outlet property="FeedImageRetryButton" destination="HBs-Kj-9Fq" id="cuI-2K-wBr"/>
                                     <outlet property="descriptionLabel" destination="H63-o4-rxp" id="wjz-lT-9Kj"/>
