@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import EssentialApp
 import Essential_Feed
 import Essential_FeediOS
  
