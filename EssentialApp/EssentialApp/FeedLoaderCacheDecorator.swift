@@ -4,8 +4,8 @@
 //
 //  Created by Amin on 7/9/1401 AP.
 //
-
 import Essential_Feed
+
 
 public final class FeedLoaderCacheDecorator: FeedLoader {
     private let decoratee: FeedLoader
@@ -25,7 +25,8 @@ public final class FeedLoaderCacheDecorator: FeedLoader {
         }
     }
 }
-private extension FeedCache {
+
+extension FeedCache {
     func saveIgnoringResult(_ feed: [FeedImage]) {
         save(feed) { _ in }
     }
